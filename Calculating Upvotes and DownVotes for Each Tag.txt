@@ -1,0 +1,34 @@
+----------------Calculating UpVotes For each Tag-------------------
+
+
+SELECT  TagName, COUNT(Votes.id) AS UpVotes 
+FROM  Votes Inner Join Posts On Votes.Postid = Posts.id 
+            Inner Join PostTags On Posts.Parentid = PostTags.Postid
+            Inner Join Tags On PostTags.Tagid = Tags.id
+
+where  VoteTypeId = 2
+GROUP BY TagName 
+ORDER BY UpVotes DESC
+
+
+----------------Calculating DownVotes For each Tag-------------------
+
+
+SELECT  TagName, COUNT(Votes.id) AS DownVotes 
+FROM  Votes Inner Join Posts On Votes.Postid = Posts.id 
+            Inner Join PostTags On Posts.Parentid = PostTags.Postid
+            Inner Join Tags On PostTags.Tagid = Tags.id
+
+where  VoteTypeId = 3
+GROUP BY TagName 
+ORDER BY DownVotes DESC
+
+
+
+
+
+
+
+
+
+
